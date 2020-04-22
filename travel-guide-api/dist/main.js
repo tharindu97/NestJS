@@ -7,7 +7,7 @@ const platform_express_1 = require("@nestjs/platform-express");
 const functions = require("firebase-functions");
 const server = express();
 exports.createNestServer = async (expressInstance) => {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_express_1.ExpressAdapter());
+    const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_express_1.ExpressAdapter(expressInstance));
     return app.init();
 };
 exports.createNestServer(server)

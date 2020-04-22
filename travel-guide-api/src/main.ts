@@ -10,7 +10,7 @@ const server = express();
 export const createNestServer = async (expressInstance)=>{
   const app = await NestFactory.create(
     AppModule,
-    new ExpressAdapter()
+    new ExpressAdapter(expressInstance)
   );
   return app.init();
 };
