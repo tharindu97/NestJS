@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@nestjs/core");
-const app_module_1 = require("./app.module");
 const express = require("express");
 const platform_express_1 = require("@nestjs/platform-express");
 const functions = require("firebase-functions");
+const user_module_1 = require("./user/user.module");
 const server = express();
 exports.createNestServer = async (expressInstance) => {
-    const app = await core_1.NestFactory.create(app_module_1.AppModule, new platform_express_1.ExpressAdapter(expressInstance));
+    const app = await core_1.NestFactory.create(user_module_1.UserModule, new platform_express_1.ExpressAdapter(expressInstance));
     return app.init();
 };
 exports.createNestServer(server)
