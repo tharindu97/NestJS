@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const admin = require("firebase-admin");
+const ArgumentError_1 = require("../error/ArgumentError");
 let UserRepository = class UserRepository {
     async addOrUpdate(userDto) {
         const db = admin.firestore();
@@ -17,6 +18,23 @@ let UserRepository = class UserRepository {
             email: userDto.email,
             userType: userDto.userType
         });
+    }
+    async getUser(uid) {
+        if (uid == null || undefined || uid === '') {
+            throw new ArgumentError_1.ArgumentError('uid is null or empty');
+        }
+        const db = admin.firestore();
+        const data = await db.collection('users').doc(uid).get();
+        if (data.exists) {
+            return {
+                uid,
+                firstName: data.data().firstName,
+                lastName: data.data().lastName,
+                email: data.data().email,
+                userType: data.data().userType
+            };
+        }
+        return null;
     }
 };
 UserRepository = __decorate([

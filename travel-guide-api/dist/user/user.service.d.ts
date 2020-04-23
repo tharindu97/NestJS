@@ -4,4 +4,5 @@ export declare class UserService {
     private userRepository;
     constructor(userRepository: UserRepository);
     createUser(userDto: UserDto): Promise<void>;
+    getUser(uid: string): Promise<UserDto>;
 }

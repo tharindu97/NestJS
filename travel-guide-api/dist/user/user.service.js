@@ -11,12 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const user_repository_1 = require("./user.repository");
+const user_error_1 = require("./exception/user.error");
 let UserService = class UserService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
     async createUser(userDto) {
-        return this.userRepository.addOrUpdate(userDto);
+        if (await this.userRepository.getUser(userDto.uid) == null) {
+            return await this.userRepository.addOrUpdate(userDto);
+        }
+        throw new user_error_1.UserError('user already exists');
+    }
+    async getUser(uid) {
+        return await this.userRepository.getUser(uid);
     }
 };
 UserService = __decorate([

@@ -4,4 +4,5 @@ export declare class UserController {
     private userService;
     constructor(userService: UserService);
     createUser(user: UserDto): Promise<void>;
+    getUser(uid: string): Promise<UserDto>;
 }

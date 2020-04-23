@@ -2057,17 +2057,29 @@
         "version": "ca047b4cf36e6a155d75b4786e034d9334ba2eee487c38f5d8347cc2da98a5dd",
         "signature": "42235af003734eb93324877d2cb7aae5103317aa4c7d6df7b537f52f9b9867be"
       },
+      "../src/error/argumenterror.ts": {
+        "version": "dadda4f918288a8a81d9b19072ec52bd0d083e20f1fc726ff0836b354e1cc04f",
+        "signature": "4871aaf67d6ec74d62b022f5eb2346a01007d31bb7812b6f53575d5f161faf6c"
+      },
       "../src/user/user.repository.ts": {
-        "version": "0a7369efc89f2db48e80306680ff5afc4c8862962a7df8633e2a4bd7ea95089d",
-        "signature": "e5b783b82f8bbf9665e715c692be2f611ec7a1b1e88adcbdad8e0116ce0bc493"
+        "version": "edc65b5d7b7a613acf5b6e4291b1fd44b37dba21417533a4669d233268a0f622",
+        "signature": "74ab65cb4c3f7c96faf17348d0a06676ca8d269dac4878de5ff7b690d27fab1a"
+      },
+      "../src/error/badrequesterror.ts": {
+        "version": "a92216eb94ce884c912865ad0b5ed8306acff344ecb720a8db443ff5d06f1d8a",
+        "signature": "49e782531eec4508a06674035aa507b5b38c2784ecf8e18380ce69493a767720"
+      },
+      "../src/user/exception/user.error.ts": {
+        "version": "51aa8ed3db26ecc155a6a35c6cfb4851c288b9b6f8fdd97b12bb1820eaa8e62d",
+        "signature": "49874dacac24f1888aa2e519ac8e48a0cffbb8aecc192e7326f89c6a0fd31998"
       },
       "../src/user/user.service.ts": {
-        "version": "facbb5813478910662b012f31096198753d075d8c858f94049e695bd7a31456b",
-        "signature": "fcea3b70b6e74a86131d159b540a356305fb863b2523dfa2ee7244cac73ac0c4"
+        "version": "b2b296fd3bb34c3d9a66dafe597cfa4ec5fa54847e2ae4fc02f6436d7ce085f6",
+        "signature": "8846adeb80e5e37dae3ddbd1359b7e5bbb402faa35a88a28e38e2c5690c1b025"
       },
       "../src/user/user.controller.ts": {
-        "version": "922ef81fb86beda4332c694cea39452233aefa12f67c86afc9e1447a7ab8c171",
-        "signature": "99638e07cc6fe3af3301a5c41a91975022c6afced6fc7635e5b24f1377733b6d"
+        "version": "098b34f1882d6fe149a530e59bda2e3386d046014ad3b88d5b32edba9bcab865",
+        "signature": "2d00e1590b28790f4a3f4c802db067381b913553fc90929f27fe69445513f311"
       },
       "../src/user/user.module.ts": {
         "version": "95040c70c15849c01ed8fda14536d2afd5bf2eab14b718bc820a57ac35b0082d",
@@ -6486,10 +6498,30 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/error/argumenterror.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/user/user.repository.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/user/dto/user.dto.ts",
         "../node_modules/firebase-admin/lib/index.d.ts",
+        "../src/error/argumenterror.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/error/badrequesterror.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/user/exception/user.error.ts": [
+        "../src/error/badrequesterror.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -6499,6 +6531,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/user/dto/user.dto.ts",
         "../src/user/user.repository.ts",
+        "../src/user/exception/user.error.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -6508,6 +6541,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/user/dto/user.dto.ts",
         "../src/user/user.service.ts",
+        "../src/user/exception/user.error.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -10165,6 +10199,9 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/user/exception/user.error.ts": [
+        "../src/error/badrequesterror.ts"
       ],
       "../src/user/dto/user.dto.ts": [
         "../src/user/enums/usertype.enum.ts"

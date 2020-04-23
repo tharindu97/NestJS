@@ -15,12 +15,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const user_dto_1 = require("./dto/user.dto");
 const user_service_1 = require("./user.service");
+const user_error_1 = require("./exception/user.error");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
     }
     async createUser(user) {
-        return this.userService.createUser(user);
+        try {
+            return this.userService.createUser(user);
+        }
+        catch (e) {
+            if (e instanceof user_error_1.UserError) {
+                throw new common_1.HttpException(e.message, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            console.error('Internal Server Error. Failed to create user', e);
+            throw new common_1.HttpException('Internal Server Error', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    async getUser(uid) {
+        try {
+            const userResponse = await this.userService.getUser(uid);
+            if (userResponse != null) {
+                return userResponse;
+            }
+            else {
+                throw new user_error_1.UserError('User does not exist');
+            }
+        }
+        catch (e) {
+            if (e instanceof user_error_1.UserError) {
+                throw new common_1.HttpException(e.message, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            console.error('Internal Server Error. Failed to get user', e);
+            throw new common_1.HttpException('Internal Server Error', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 };
 __decorate([
@@ -30,6 +58,13 @@ __decorate([
     __metadata("design:paramtypes", [user_dto_1.UserDto]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "createUser", null);
+__decorate([
+    common_1.Get(':uid'),
+    __param(0, common_1.Param('uid')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getUser", null);
 UserController = __decorate([
     common_1.Controller('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])
